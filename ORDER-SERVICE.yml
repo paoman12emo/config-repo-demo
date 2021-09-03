@@ -1,0 +1,32 @@
+server:
+    port: 8082
+    
+spring:
+  application:
+    name: ORDER-SERVICE
+  zipkin:
+    base-url: http://host.docker.internal:9411  
+  cloud:
+    config:
+      enabled: false
+  sleuth:
+    sampler:
+      probability: 50
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://host.docker.internal:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    
+logging:
+  level:
+    org:
+     springframework:
+      web:
+       servlet:
+        DispatcherServlet: TRACE    
