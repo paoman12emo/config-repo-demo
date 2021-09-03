@@ -12,7 +12,8 @@ spring:
   sleuth:
     sampler:
       probability: 50
-
+message:
+  greeting: Hello! =====>>>>> order-service configuration
 eureka:
   client:
     register-with-eureka: true
