@@ -1,0 +1,48 @@
+server:
+    port: 8080
+    
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+      - id: order-service
+        uri: lb://ORDER-SERVICE
+        predicates:
+        - Path=/order/**
+      - id: pay-service
+        uri: lb://PAY-SERVICE
+        predicates:
+        - Path=/pay/**
+      - id: confirm-service
+        uri: lb://CONFIRM-SERVICE
+        predicates:
+        - Path=/confirm/**
+     
+  sleuth:
+    sampler:
+      probability: 100
+  zipkin:
+    base-url: http://host.docker.internal:9411
+
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://host.docker.internal:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    
+logging:
+  level:
+    org:
+     springframework:
+      web:
+       servlet:
+        DispatcherServlet: TRACE
