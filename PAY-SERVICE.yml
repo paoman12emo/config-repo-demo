@@ -6,22 +6,21 @@ message:
 spring:
   application:
     name: PAY-SERVICE
-
   sleuth:
     sampler:
       probability: 100
   zipkin:
     base-url: http://host.docker.internal:9411
     
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://host.docker.internal:8761/eureka/
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://host.docker.internal:8761/eureka/
+#  instance:
+#    hostname: localhost
+#    prefer-ip-address: true
 
 logging:
   level:
